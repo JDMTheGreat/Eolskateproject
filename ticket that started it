@@ -1,0 +1,34 @@
+Chromebook Troubleshooting
+11/16/24
+
+Issue: Chromebooks 1 & 2 could not connect to the internet.
+
+Initial possible cause: NIC issues that could require a physical repair
+
+Methodology:
+ I logged into Chromebook 1 and found only guest profile accessible. Chromebook ahs city log-ins but no discernible “managed by messages”
+    Guest could not connect to the internet over public wifi unable to establish a connection and the captive portal returned a 204 error
+    Attempted connectivity over a hotspot found the Chromebook was capable of accessing the internet
+    Issue suspected the same for both devices
+    I tried an unsecured HTTP connection which forced a redirect to the portal
+Able to accept public wifi terms and connect to the internet issue resolved on both devices
+
+Future concerns:
+    Devices are unmanaged so no regular checking of security settings.
+    Sessions will eventually time out and Guest profiles may return to not having connectivity over the public wifi will require a manual forcing of going to the captive portal to accept terms again
+    No access to admin logins to manage devices
+
+Options for going forward:
+    1. Leave devices as is and leave instructions for a manual reconnect process
+        Devices will be vulnerable and will require regular manual reconnection processes to the public wifi
+        Devices are ready to go today
+    2. Convert to Cloud terminals 
+        Devices will need extra work to convert to simple terminals that can only do basic tasks with limited connectivity
+        Devices remain vulnerable due to EOL issues and not getting updates
+    3. Reimage devices with Gallium OS
+        A lightweight OS designed for Chromebooks will enable all security functions due to it being an Open source OS that constantly receives updates
+        Will require more downtime for clearing and reformatting device drives
+        Looks feels and works a lot like Chrome OS
+    4. Recycle and replace devices
+        Similar books are 130-230$ per device
+        current models should be good for years to come
