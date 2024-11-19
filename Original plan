@@ -1,0 +1,85 @@
+Chromebook conversion to Gallium
+
+Step 1: 
+1. Enable Developer Mode on the Chromebook
+       This is necessary to gain access to the full system to install GalliumOS.
+2. Turn off the Chromebook.
+3. Enter Recovery Mode:
+    a. Press and hold the Esc + Refresh keys, then press the Power button.
+    b. Keep holding the Esc + Refresh keys until you see a recovery screen.
+4. Enable Developer Mode:
+    a. On the recovery screen, press Ctrl + D to enable Developer Mode.
+    b. You will see a warning message about data loss. Press Enter to continue.
+5. The Chromebook will reboot and start transitioning to Developer Mode, which may take several minutes. This process will wipe all local data.
+ - Note: When Developer Mode is enabled, the Chromebook will prompt you to press Ctrl + D at every boot to proceed. You can skip this warning once GalliumOS is installed.
+
+Step 2: 
+1. Flash the Chromebook's BIOS (if required)
+    a. Some Chromebooks require a custom BIOS to install a Linux distribution, as ChromeOS uses a specialized firmware. For these devices, you’ll need to replace the stock ChromeOS firmware with one compatible with GalliumOS.
+    b. Visit MrChromebox’s website to get the required BIOS image for your specific model:
+    c. Go to MrChromebox's Firmware Project for detailed instructions and downloads.
+2. Enable Write Protection (if required):
+    a. Most newer Chromebooks have write protection on the firmware to prevent changes. You’ll need to physically remove a screw or jumper on the device's motherboard to disable this protection. Check MrChromebox’s site for specific instructions for your Chromebook model.
+3. Flash the BIOS:
+    a. After disabling write protection, you’ll use MrChromebox's tools to flash the custom firmware.
+    Open Crosh (Ctrl + Alt + T) and type the following command:
+    `bash`
+    `shell` 
+    `sudo crossystem dev_boot_usb=1 dev_boot_legacy=1`
+
+4. Follow the instructions on the MrChromebox website to download and install the firmware using a USB drive or a live Linux environment.
+
+Step 3: 
+1. Create a Bootable USB Drive for GalliumOS
+    a. Download GalliumOS:
+    b. Go to GalliumOS Download Page and choose the correct version for your Chromebook model.
+    c. Create a Bootable USB Drive:
+    d.Use a tool like Etcher or Rufus to create a bootable USB stick with the GalliumOS ISO image. Make sure the USB drive has at least 4GB of space.
+2. On your computer, open Etcher, select the GalliumOS ISO, and choose the USB drive. Then click Flash! to create the bootable USB drive.
+
+Step 4: 
+1. Boot from USB and Install GalliumOS
+    a. Plug the Bootable USB Drive into the Chromebook.
+2. Enter Recovery Mode:
+    a. Turn off the Chromebook, then turn it back on while holding Esc + Refresh + Power.
+     - This should take you to a recovery screen.
+3. Boot from USB:
+ - If you have flashed the BIOS to allow booting from USB, the Chromebook should automatically detect the USB drive as a bootable option.
+ - If not, press Ctrl + L when the screen shows the recovery message. This should boot the Chromebook from the USB drive.
+4. Start the GalliumOS Installation:
+ - Once GalliumOS boots from the USB drive, you'll see the GalliumOS desktop.
+5. Double-click the Install GalliumOS icon to start the installation process.
+6. Follow the on-screen prompts to install GalliumOS on the Chromebook.
+ - Choose the appropriate language, time zone, and installation options. Note: This will wipe ChromeOS completely and install GalliumOS.
+
+Step 5: 
+1. Complete the Installation and Set Up GalliumOS
+2. Finalize the Installation:
+3. Once the installation is complete, the Chromebook will prompt you to reboot. Remove the USB drive before rebooting.
+4. First Boot of GalliumOS:
+ - On the first boot, GalliumOS will take a few minutes to finalize setup. Once it’s done, you’ll be able to log in and start using GalliumOS.
+ - You’ll see the familiar Xfce desktop environment, similar to other lightweight Linux distros.
+5. Update and Configure:
+ - Once logged in, update the system by opening a Terminal and running:
+`bash`
+`sudo apt update`
+`sudo apt upgrade`
+
+6. Configure your Wi-Fi, install any additional software, and set up your user accounts as needed.
+
+Step 6: 
+1. Optional - Set Up a Guest Account or Guest Session
+    a. If you want to configure a Guest Mode or resettable Guest Session for multiple users:
+ - Enable Guest Session:
+    b. Open the Terminal and run:
+`bash`
+`sudo nano /etc/lightdm/lightdm.conf`
+
+2. Add the following lines under the [Seat:*] section:
+`Copy code`
+`allow-guest=true`
+`guest-session=true`
+
+3. Save and exit (Ctrl + O, then Ctrl + X), then restart the system.
+4. Test the Guest Session:
+ - Log out of your account, and you should see a “Guest Session” option on the login screen.
